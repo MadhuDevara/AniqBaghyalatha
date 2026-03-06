@@ -11,13 +11,13 @@ export const contactInfo = {
 }
 
 export const workingHours = [
+  { day: 'Monday', time: '8:00 AM - 10:30 PM' },
+  { day: 'Tuesday', time: '8:00 AM - 10:30 PM' },
+  { day: 'Wednesday', time: '8:00 AM - 10:30 PM' },
   { day: 'Thursday', time: '8:00 AM - 10:30 PM' },
   { day: 'Friday', time: '8:00 AM - 10:30 PM' },
   { day: 'Saturday', time: '8:00 AM - 10:30 PM' },
   { day: 'Sunday', time: '8:00 AM - 10:30 PM' },
-  { day: 'Monday', time: '8:00 AM - 10:30 PM' },
-  { day: 'Tuesday', time: '8:00 AM - 10:30 PM' },
-  { day: 'Wednesday', time: '8:00 AM - 10:30 PM' },
 ]
 
 export const services = [
