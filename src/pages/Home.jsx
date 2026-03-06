@@ -20,11 +20,11 @@ function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/25 to-black/10" />
         <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl items-end pb-8 md:pb-12">
-          <div className="max-w-xl rounded-2xl border border-white/20 bg-black/40 p-4 text-white backdrop-blur-sm md:p-6">
+          <div className="max-w-md rounded-2xl border border-white/20 bg-black/40 p-4 text-white backdrop-blur-sm md:p-5">
             <p className="animate-fade-up text-xs tracking-[0.28em] text-amber-300 md:text-sm">
               STYLE • BEAUTY • CONFIDENCE
             </p>
-            <h1 className="animate-fade-up-delay mt-2 text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="animate-fade-up-delay mt-2 text-4xl font-bold leading-tight md:text-[3rem]">
               Aniq Salon Baghyalatha
             </h1>
             <Link to="/book-appointment" className="btn-primary mt-5">
