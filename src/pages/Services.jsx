@@ -9,7 +9,7 @@ function Services() {
         Premium salon services tailored to your style, comfort, and confidence.
       </p>
 
-      <div className="mt-8 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="mt-8 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         {services.map((service) => (
           <ServiceCard key={service.name} compact {...service} />
         ))}
