@@ -35,9 +35,9 @@ function Home() {
         <img
           src={heroImages[activeHeroIndex]?.image || '/home-hero.png'}
           alt={heroImages[activeHeroIndex]?.title || 'Aniq Salon Baghyalatha interior'}
-          className="h-[62vh] w-full object-cover object-top"
+          className="h-[62vh] w-full bg-stone-900 object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/25 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/20 to-black/10" />
         <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl items-end pb-8 md:pb-12">
           <div className="max-w-md rounded-2xl border border-white/20 bg-black/40 p-4 text-white backdrop-blur-sm md:p-5">
             <p className="animate-fade-up text-xs tracking-[0.28em] text-amber-300 md:text-sm">
