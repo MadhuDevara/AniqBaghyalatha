@@ -11,8 +11,11 @@ const initialState = {
   message: '',
 }
 
-function BookingForm() {
-  const [formData, setFormData] = useState(initialState)
+function BookingForm({ initialService = '' }) {
+  const [formData, setFormData] = useState({
+    ...initialState,
+    serviceType: initialService,
+  })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const serviceOptions = useMemo(
