@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
 import TestimonialCard from '../components/TestimonialCard'
@@ -10,12 +11,30 @@ import {
 } from '../data/siteData'
 
 function Home() {
+  const heroImages = useMemo(
+    () => galleryItems.filter((item) => item.category === 'Salon Interior'),
+    [],
+  )
+  const [activeHeroIndex, setActiveHeroIndex] = useState(0)
+
+  const showPreviousHero = () => {
+    setActiveHeroIndex((prev) =>
+      prev === 0 ? heroImages.length - 1 : prev - 1,
+    )
+  }
+
+  const showNextHero = () => {
+    setActiveHeroIndex((prev) =>
+      prev === heroImages.length - 1 ? 0 : prev + 1,
+    )
+  }
+
   return (
     <main>
       <section className="relative overflow-hidden">
         <img
-          src="/home-hero.png"
-          alt="Aniq Salon Baghyalatha storefront"
+          src={heroImages[activeHeroIndex]?.image || '/home-hero.png'}
+          alt={heroImages[activeHeroIndex]?.title || 'Aniq Salon Baghyalatha interior'}
           className="h-[62vh] w-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/25 to-black/10" />
@@ -32,6 +51,38 @@ function Home() {
             </Link>
           </div>
         </div>
+
+        {heroImages.length > 1 && (
+          <>
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 px-3 py-2 text-2xl text-white hover:bg-black/50"
+              onClick={showPreviousHero}
+              aria-label="Previous hero image"
+            >
+              ‹
+            </button>
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 px-3 py-2 text-2xl text-white hover:bg-black/50"
+              onClick={showNextHero}
+              aria-label="Next hero image"
+            >
+              ›
+            </button>
+
+            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+              {heroImages.map((image, index) => (
+                <button
+                  key={`hero-dot-${image.title}`}
+                  className={`h-2.5 w-2.5 rounded-full transition ${
+                    activeHeroIndex === index ? 'bg-amber-400' : 'bg-white/60'
+                  }`}
+                  onClick={() => setActiveHeroIndex(index)}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       <section className="section-wrap-home">
