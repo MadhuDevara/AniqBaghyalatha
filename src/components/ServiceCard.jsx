@@ -1,9 +1,21 @@
-function ServiceCard({ icon, name, price }) {
+function ServiceCard({ icon, name, price, compact = false }) {
+  const containerClass = compact
+    ? 'rounded-xl border border-amber-200/30 bg-white p-3 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md'
+    : 'rounded-2xl border border-amber-200/30 bg-white p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg'
+
+  const iconClass = compact ? 'text-2xl' : 'text-3xl'
+  const titleClass = compact
+    ? 'mt-2 text-base font-semibold text-stone-900'
+    : 'mt-4 text-lg font-semibold text-stone-900'
+  const priceClass = compact
+    ? 'mt-1 text-sm text-amber-700'
+    : 'mt-2 text-amber-700'
+
   return (
-    <article className="group rounded-2xl border border-amber-200/30 bg-white p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-      <span className="text-3xl">{icon}</span>
-      <h3 className="mt-4 text-lg font-semibold text-stone-900">{name}</h3>
-      <p className="mt-2 text-amber-700">Starts from ₹{price} onwards</p>
+    <article className={`group ${containerClass}`}>
+      <span className={iconClass}>{icon}</span>
+      <h3 className={titleClass}>{name}</h3>
+      <p className={priceClass}>Starts from ₹{price} onwards</p>
     </article>
   )
 }
