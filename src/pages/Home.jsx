@@ -4,6 +4,7 @@ import TestimonialCard from '../components/TestimonialCard'
 import {
   contactInfo,
   featuredServices,
+  galleryItems,
   testimonials,
   workingHours,
 } from '../data/siteData'
@@ -33,10 +34,82 @@ function Home() {
 
       <section className="section-wrap">
         <h2 className="section-title">Featured Services</h2>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {featuredServices.map((service) => (
             <ServiceCard key={service.name} {...service} />
           ))}
+        </div>
+        <div className="mt-6">
+          <Link to="/services" className="btn-secondary">
+            View All Services
+          </Link>
+        </div>
+      </section>
+
+      <section className="section-wrap bg-stone-100">
+        <h2 className="section-title">Why Choose Us</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article className="rounded-2xl border border-stone-200 bg-white p-5">
+            <p className="text-2xl">🧼</p>
+            <h3 className="mt-3 font-semibold text-stone-900">Clean & Hygienic</h3>
+            <p className="mt-2 text-sm text-stone-600">
+              Strict hygiene standards for a safe and comfortable salon visit.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-stone-200 bg-white p-5">
+            <p className="text-2xl">💼</p>
+            <h3 className="mt-3 font-semibold text-stone-900">
+              Experienced Stylists
+            </h3>
+            <p className="mt-2 text-sm text-stone-600">
+              Skilled professionals who personalize every look to your preference.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-stone-200 bg-white p-5">
+            <p className="text-2xl">💎</p>
+            <h3 className="mt-3 font-semibold text-stone-900">Premium Products</h3>
+            <p className="mt-2 text-sm text-stone-600">
+              Quality products selected for long-lasting, salon-finish results.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-stone-200 bg-white p-5">
+            <p className="text-2xl">📅</p>
+            <h3 className="mt-3 font-semibold text-stone-900">Easy Booking</h3>
+            <p className="mt-2 text-sm text-stone-600">
+              Fast appointment booking with quick phone and WhatsApp support.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section-wrap">
+        <h2 className="section-title">Salon Glimpses</h2>
+        <p className="mt-3 max-w-2xl text-stone-600">
+          A quick look at our salon interiors and transformations.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {galleryItems.slice(0, 4).map((item) => (
+            <article
+              key={`home-${item.title}`}
+              className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-48 w-full object-cover transition duration-300 hover:scale-105"
+                loading="lazy"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-stone-900">{item.title}</h3>
+                <p className="text-sm text-amber-700">{item.category}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6">
+          <Link to="/gallery" className="btn-secondary">
+            Explore Full Gallery
+          </Link>
         </div>
       </section>
 

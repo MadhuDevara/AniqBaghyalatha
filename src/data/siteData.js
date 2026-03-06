@@ -179,7 +179,7 @@ export const testimonials = [
   },
 ]
 
-export const featuredServices = services.slice(0, 6)
+export const featuredServices = services.slice(0, 3)
 
 export const galleryItems = [
   {
