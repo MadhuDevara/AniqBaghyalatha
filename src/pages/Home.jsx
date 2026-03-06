@@ -32,7 +32,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap">
+      <section className="section-wrap-home">
         <h2 className="section-title">Featured Services</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {featuredServices.map((service) => (
@@ -46,7 +46,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap bg-stone-100">
+      <section className="section-wrap-home bg-stone-100">
         <h2 className="section-title">Why Choose Us</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <article className="rounded-2xl border border-stone-200 bg-white p-5">
@@ -82,7 +82,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap">
+      <section className="section-wrap-home">
         <h2 className="section-title">Salon Glimpses</h2>
         <p className="mt-3 max-w-2xl text-stone-600">
           A quick look at our salon interiors and transformations.
@@ -113,7 +113,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap bg-stone-100">
+      <section className="section-wrap-home bg-stone-100">
         <h2 className="section-title">Customer Reviews</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {testimonials.map((testimonial) => (
@@ -122,7 +122,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap">
+      <section className="section-wrap-home">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-stone-200 bg-white p-6">
             <h3 className="text-2xl font-semibold text-stone-900">
