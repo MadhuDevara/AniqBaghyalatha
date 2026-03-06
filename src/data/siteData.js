@@ -21,18 +21,60 @@ export const workingHours = [
 ]
 
 export const services = [
-  { name: 'Haircut', icon: '✂️', price: 250, category: 'Haircuts' },
-  { name: 'Hair Styling', icon: '💇', price: 600, category: 'Haircuts' },
-  { name: 'Hair Coloring', icon: '🎨', price: 1800, category: 'Haircuts' },
-  { name: 'Hair Spa', icon: '🧖', price: 800, category: 'Haircuts' },
-  { name: 'Beard Trim', icon: '🧔', price: 150, category: 'Haircuts' },
-  { name: 'Facial', icon: '✨', price: 1200, category: 'Makeup' },
-  { name: 'Skin Care', icon: '🌸', price: 1400, category: 'Makeup' },
+  { name: 'Haircut', icon: '✂️', price: 149, category: 'Haircuts' },
+  { name: 'Hair Styling', icon: '💇', price: 349, category: 'Haircuts' },
+  { name: 'Hair Coloring', icon: '🎨', price: 249, category: 'Haircuts' },
+  { name: 'Hair Spa', icon: '🧖', price: 599, category: 'Haircuts' },
+  { name: 'Beard Trim / Shape', icon: '🧔', price: 69, category: 'Haircuts' },
+  { name: 'Facial', icon: '✨', price: 599, category: 'Makeup' },
+  { name: 'Skin Care', icon: '🌸', price: 249, category: 'Makeup' },
   { name: 'Bridal Makeup', icon: '👰', price: 12000, category: 'Bridal Looks' },
-  { name: 'Threading', icon: '🪞', price: 120, category: 'Makeup' },
-  { name: 'Waxing', icon: '🕯️', price: 700, category: 'Makeup' },
-  { name: 'Manicure', icon: '💅', price: 500, category: 'Salon Interior' },
-  { name: 'Pedicure', icon: '🦶', price: 650, category: 'Salon Interior' },
+  { name: 'Threading (Eyebrows)', icon: '🪞', price: 49, category: 'Makeup' },
+  { name: 'Waxing', icon: '🕯️', price: 300, category: 'Makeup' },
+  { name: 'Manicure', icon: '💅', price: 399, category: 'Salon Interior' },
+  { name: 'Pedicure', icon: '🦶', price: 499, category: 'Salon Interior' },
+]
+
+export const pricingBySection = {
+  male: [
+    { name: 'Haircut', price: '₹149/-' },
+    { name: 'Beard / Shape', price: '₹69/-' },
+    { name: 'Hair Colour', price: '₹249/-' },
+    { name: 'Facial', price: '₹599/-' },
+    { name: 'D-Tan / Scrub', price: '₹249/-' },
+    { name: 'Clean Up', price: '₹499/-' },
+    { name: 'Hair Spa', price: '₹599/-' },
+    { name: 'Head Massage', price: '₹99/-' },
+    { name: 'Manicure', price: '₹399/-' },
+    { name: 'Pedicure', price: '₹499/-' },
+    { name: 'Hydra Clean Up', price: '₹1499/-' },
+    { name: 'Tattoo (per inch)', price: '₹349/-*' },
+  ],
+  female: [
+    { name: 'Haircut', price: '₹349/-*' },
+    { name: 'Eye Brows', price: '₹49/-*' },
+    { name: 'Hair Colour', price: 'Price based on length' },
+    { name: 'Facial', price: '₹599/-*' },
+    { name: 'D-Tan / Scrub', price: '₹249/-*' },
+    { name: 'Clean Up', price: '₹499/-' },
+    { name: 'Hair Spa', price: '₹699/-*' },
+    { name: 'Waxing', price: '₹300/-*' },
+    { name: 'Manicure', price: '₹399/-' },
+    { name: 'Pedicure', price: '₹499/-' },
+    { name: 'Hydra Facial', price: '₹1999/-*' },
+    { name: 'Tattoo Removal (per inch)', price: '₹499/-*' },
+  ],
+}
+
+export const premiumServices = [
+  'Keratin',
+  'Botox',
+  'Nano Plastia',
+  'Bio-Plastia',
+  'Hair Smoothing',
+  'Straightening',
+  'Perming',
+  'Hair Fall & Anti Dandruff Spa',
 ]
 
 export const testimonials = [
