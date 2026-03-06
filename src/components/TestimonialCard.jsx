@@ -1,6 +1,13 @@
-function TestimonialCard({ name, review }) {
+function TestimonialCard({ name, review, rating = 5 }) {
+  const stars = Array.from({ length: rating }, (_, index) => (
+    <span key={`${name}-star-${index}`} aria-hidden="true">
+      ★
+    </span>
+  ))
+
   return (
-    <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
+    <article className="glass-card rounded-2xl p-6">
+      <p className="text-sm tracking-wide text-[#6B6B6B]">{stars}</p>
       <p className="text-stone-700">"{review}"</p>
       <p className="mt-4 font-semibold text-stone-900">{name}</p>
     </article>

@@ -37,7 +37,7 @@ function BookingForm({ initialService = '' }) {
     const details = [
       'New Appointment Request',
       `Name: ${formData.name}`,
-      `Phone: ${formData.phone}`,
+      `WhatsApp Number: ${formData.phone}`,
       `Service: ${formData.serviceType}`,
       `Date: ${formData.preferredDate}`,
       `Time: ${formData.preferredTime}`,
@@ -50,10 +50,10 @@ function BookingForm({ initialService = '' }) {
   }
 
   return (
-    <div className="rounded-2xl border border-amber-200 bg-white p-6 shadow-sm md:p-8">
+    <div className="rounded-2xl border border-black/10 bg-white p-5 shadow-sm md:p-6">
       <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
         <input
-          className="input-field md:col-span-1"
+          className="input-field py-2.5 text-sm md:col-span-1"
           name="name"
           placeholder="Name"
           value={formData.name}
@@ -61,15 +61,15 @@ function BookingForm({ initialService = '' }) {
           required
         />
         <input
-          className="input-field md:col-span-1"
+          className="input-field py-2.5 text-sm md:col-span-1"
           name="phone"
-          placeholder="Phone Number"
+          placeholder="WhatsApp Number"
           value={formData.phone}
           onChange={handleChange}
           required
         />
         <select
-          className="input-field md:col-span-2"
+          className="input-field py-2.5 text-sm md:col-span-2"
           name="serviceType"
           value={formData.serviceType}
           onChange={handleChange}
@@ -83,7 +83,7 @@ function BookingForm({ initialService = '' }) {
           ))}
         </select>
         <input
-          className="input-field"
+          className="input-field py-2.5 text-sm"
           type="date"
           name="preferredDate"
           value={formData.preferredDate}
@@ -91,7 +91,7 @@ function BookingForm({ initialService = '' }) {
           required
         />
         <input
-          className="input-field"
+          className="input-field py-2.5 text-sm"
           type="time"
           name="preferredTime"
           value={formData.preferredTime}
@@ -99,22 +99,22 @@ function BookingForm({ initialService = '' }) {
           required
         />
         <input
-          className="input-field md:col-span-2"
+          className="input-field py-2.5 text-sm md:col-span-2"
           name="stylist"
           placeholder="Stylist (optional)"
           value={formData.stylist}
           onChange={handleChange}
         />
         <textarea
-          className="input-field md:col-span-2"
-          rows="4"
+          className="input-field py-2.5 text-sm md:col-span-2"
+          rows="3"
           name="message"
           placeholder="Message"
           value={formData.message}
           onChange={handleChange}
         />
-        <button className="btn-primary md:col-span-2" type="submit">
-          Confirm Appointment
+        <button className="btn-primary w-fit px-6 md:col-span-2" type="submit">
+          Confirm and Send Details
         </button>
       </form>
 

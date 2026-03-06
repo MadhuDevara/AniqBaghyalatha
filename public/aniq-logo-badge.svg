@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AniQ logo">
+  <rect width="512" height="512" rx="34" fill="#000000" />
+  <rect x="10" y="10" width="492" height="492" rx="28" fill="none" stroke="#1f1f1f" stroke-width="3" />
+
+  <g fill="#ffffff">
+    <text
+      x="256"
+      y="286"
+      font-family="Poppins, Arial, sans-serif"
+      font-size="176"
+      font-weight="600"
+      text-anchor="middle"
+      letter-spacing="-6"
+    >
+      AniQ
+    </text>
+
+    <text
+      x="256"
+      y="360"
+      font-family="Poppins, Arial, sans-serif"
+      font-size="36"
+      font-weight="600"
+      text-anchor="middle"
+      letter-spacing="1.6"
+    >
+      Unisex-Beauty Salon
+    </text>
+    <text
+      x="256"
+      y="402"
+      font-family="Poppins, Arial, sans-serif"
+      font-size="30"
+      font-weight="700"
+      text-anchor="middle"
+      letter-spacing="2"
+    >
+      &amp; Tattoos
+    </text>
+  </g>
+
+  <g fill="#ffffff" transform="translate(82,66)">
+    <circle cx="42" cy="28" r="19" fill="none" stroke="#fff" stroke-width="7" />
+    <line x1="42" y1="46" x2="42" y2="63" stroke="#fff" stroke-width="7" stroke-linecap="round" />
+    <line x1="34" y1="55" x2="50" y2="55" stroke="#fff" stroke-width="7" stroke-linecap="round" />
+
+    <circle cx="117" cy="18" r="19" fill="none" stroke="#fff" stroke-width="7" />
+    <line x1="132" y1="3" x2="148" y2="-13" stroke="#fff" stroke-width="7" stroke-linecap="round" />
+    <polygon points="144,-22 160,-18 148,-6" />
+
+    <line x1="54" y1="48" x2="102" y2="168" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+    <line x1="105" y1="37" x2="63" y2="168" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+    <circle cx="79" cy="108" r="5.5" />
+  </g>
+</svg>

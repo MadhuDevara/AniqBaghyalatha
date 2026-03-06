@@ -11,10 +11,10 @@ function ContactUs() {
           <h2 className="text-xl font-semibold text-stone-900">Get in touch</h2>
           <p className="mt-3 text-stone-700">{contactInfo.address}</p>
           <a
-            className="mt-3 block text-stone-700 hover:text-amber-700"
-            href={`tel:${contactInfo.phone}`}
+            className="mt-3 block text-stone-700 hover:text-black"
+            href={`tel:${contactInfo.phoneLink}`}
           >
-            Phone: {contactInfo.phone}
+            Contact: {contactInfo.contactLine}
           </a>
           <a
             className="mt-2 inline-block rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white"

@@ -1,9 +1,12 @@
 export const contactInfo = {
-  phone: '7330033007',
-  whatsapp: '+917330033007',
-  instagram: 'https://www.instagram.com/',
+  phone: '9666833811',
+  phoneLink: '+919666833811',
+  phoneAlt: '040-24201515',
+  contactLine: '📞 9666833811 / ☎️040-24201515',
+  whatsapp: '+919666833811',
+  instagram: 'https://www.instagram.com/aniq_salon_bhagyalathacolony/',
   address:
-    'Rama Devi Arcade, Shanti Nagar X Road, Bhagyalatha Colony, Hayathnagar, Hyderabad, Telangana 500070',
+    'Rama devi arcade, Shanti nagar X road, Bhagyalatha Colony, Hayathnagar, Hyderabad, Telangana 500070',
   mapLink:
     'https://www.google.com/maps/place/ANIQ+-+Unisex+Salon+%26+Tattoos+-+Shanti+nagar+X+road+(+Bhagyalatha+colony)/@17.3278416,78.5850334,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcba18e9c001801:0x6f7250c6da1e97ee!8m2!3d17.3278365!4d78.5876083!16s%2Fg%2F11w8yg8hvc?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D',
   mapEmbedUrl:
@@ -204,13 +207,25 @@ export const galleryItems = [
     title: 'Bridal Signature Look',
     category: 'Bridal Looks',
     image:
-      'https://images.unsplash.com/photo-1596704017254-9f8f8d193f39?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Premium Bridal Styling',
     category: 'Bridal Looks',
     image:
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Traditional Bridal Portrait',
+    category: 'Bridal Looks',
+    image:
+      'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Bridal HD Makeover',
+    category: 'Bridal Looks',
+    image:
+      'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Salon Interior 1',

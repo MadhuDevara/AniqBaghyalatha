@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import MobileStickyCTA from './components/MobileStickyCTA'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import BookAppointment from './pages/BookAppointment'
@@ -12,7 +13,7 @@ import ContactUs from './pages/ContactUs'
 
 function App() {
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900">
+    <div className="min-h-screen bg-[#F5F5F5] text-[#222222]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
       <Footer />
+      <MobileStickyCTA />
       <WhatsAppFloat />
     </div>
   )

@@ -11,7 +11,7 @@ function Pricing() {
 
   const renderTable = (title, items) => (
     <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-      <div className="bg-stone-900 px-6 py-4 text-lg font-semibold text-amber-300">
+      <div className="bg-stone-900 px-6 py-4 text-lg font-semibold text-white">
         {title}
       </div>
       <table className="w-full text-left">
@@ -25,7 +25,7 @@ function Pricing() {
           {items.map((item) => (
             <tr key={`${title}-${item.name}`} className="border-b border-stone-100">
               <td className="px-6 py-3 text-stone-800">{item.name}</td>
-              <td className="px-6 py-3 font-medium text-amber-700">
+              <td className="px-6 py-3 font-medium text-[#6B6B6B]">
                 {formatPrice(item.price)}
               </td>
             </tr>
@@ -47,7 +47,7 @@ function Pricing() {
         {renderTable('Female', pricingBySection.female)}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="text-xl font-semibold text-stone-900">Premium Services</h2>
         <p className="mt-3 text-stone-700">
           {premiumServices.join(', ')}

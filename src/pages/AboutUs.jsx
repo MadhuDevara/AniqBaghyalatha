@@ -6,8 +6,9 @@ function AboutUs() {
         <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-stone-900">Our Story</h2>
           <p className="mt-3 text-stone-700">
-            Aniq Salon Baghyalatha was founded to bring premium beauty services
-            to the neighborhood with modern techniques and personalized care.
+            Aniq Salon Baghyalatha opened in 2024 to bring premium beauty
+            services to the neighborhood with modern techniques and
+            personalized care.
           </p>
         </article>
 
@@ -27,8 +28,8 @@ function AboutUs() {
             Years of Experience
           </h2>
           <p className="mt-3 text-stone-700">
-            With 10+ years of hands-on experience in beauty and grooming, our
-            team delivers trusted, high-quality results.
+            Since opening in 2024, our team has delivered trusted, high-quality
+            beauty and grooming services with a focus on client satisfaction.
           </p>
         </article>
 

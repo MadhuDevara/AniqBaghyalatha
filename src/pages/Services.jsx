@@ -1,14 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
 import { contactInfo, premiumServices, services } from '../data/siteData'
 
+const filterCategories = ['All', 'Hair', 'Skin', 'Bridal', 'Grooming']
+
+const getServiceCategory = (service) => {
+  if (service.category === 'Haircuts') {
+    return service.name.includes('Beard') ? 'Grooming' : 'Hair'
+  }
+  if (service.category === 'Bridal Looks') {
+    return 'Bridal'
+  }
+  if (service.category === 'Makeup') {
+    return 'Skin'
+  }
+  return 'Grooming'
+}
+
 function Services() {
   const navigate = useNavigate()
   const [selectedServiceName, setSelectedServiceName] = useState(null)
+  const [category, setCategory] = useState('All')
   const selectedService = services.find(
     (service) => service.name === selectedServiceName,
   )
+  const filteredServices = useMemo(() => {
+    if (category === 'All') return services
+    return services.filter((service) => getServiceCategory(service) === category)
+  }, [category])
 
   useEffect(() => {
     if (!selectedService) {
@@ -46,22 +66,50 @@ function Services() {
         Premium salon services tailored to your style, comfort, and confidence.
       </p>
 
-      <div className="mt-8 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {services.map((service) => (
+      <div className="mt-8 mb-8 flex flex-wrap gap-3">
+        {filterCategories.map((item) => (
           <button
-            key={service.name}
-            className="text-left"
-            onClick={() => setSelectedServiceName(service.name)}
-            aria-label={`View ${service.name} details`}
+            key={item}
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+              category === item
+                ? 'border-black bg-black text-white'
+                : 'border-gray-300 bg-white text-[#6B6B6B] hover:border-gray-500 hover:bg-black/70 hover:text-white'
+            }`}
+            onClick={() => setCategory(item)}
           >
-            <ServiceCard compact {...service} />
+            {item}
           </button>
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mt-8 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        {filteredServices.map((service) => (
+          <div
+            key={service.name}
+            className="text-left"
+          >
+            <ServiceCard
+              compact
+              showBookButton
+              onCardClick={() => setSelectedServiceName(service.name)}
+              {...service}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="text-2xl font-semibold text-stone-900">Premium Services</h2>
-        <p className="mt-3 text-stone-700">{premiumServices.join(', ')}</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {premiumServices.map((service) => (
+            <span
+              key={service}
+              className="rounded-full bg-gray-100 px-3 py-1 text-sm text-[#222222]"
+            >
+              {service}
+            </span>
+          ))}
+        </div>
         <p className="mt-2 text-sm text-stone-600">* Conditions apply.</p>
       </div>
 
@@ -74,7 +122,7 @@ function Services() {
           aria-label="Service details"
         >
           <div
-            className="w-full max-w-xl rounded-2xl border border-amber-200 bg-white p-6 shadow-xl"
+            className="w-full max-w-xl rounded-2xl border border-black/10 bg-white p-6 shadow-xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -97,7 +145,7 @@ function Services() {
             <p className="mt-3 text-sm text-stone-600">
               Estimated duration: {selectedService.duration}
             </p>
-            <p className="mt-1 font-medium text-amber-700">
+            <p className="mt-1 font-medium text-[#6B6B6B]">
               Starts from ₹{selectedService.price} onwards
             </p>
             <p className="mt-2 text-xs text-stone-500">* Conditions apply.</p>

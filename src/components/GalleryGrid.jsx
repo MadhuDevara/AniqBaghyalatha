@@ -62,8 +62,8 @@ function GalleryGrid({ items }) {
             key={category}
             className={`rounded-full border px-4 py-2 text-sm transition ${
               activeCategory === category
-                ? 'border-amber-500 bg-amber-500 text-white'
-                : 'border-stone-300 bg-white text-stone-700 hover:border-amber-400 hover:text-amber-700'
+                ? 'border-black bg-black text-white'
+                : 'border-stone-300 bg-white text-[#6B6B6B] hover:border-gray-500 hover:bg-black/70 hover:text-white'
             }`}
             onClick={() => {
               setActiveCategory(category)
@@ -79,7 +79,7 @@ function GalleryGrid({ items }) {
         {filteredItems.map((item, index) => (
           <article
             key={`${item.title}-${item.image}`}
-            className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+            className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gray-400 hover:bg-gray-100/70 hover:shadow-xl"
           >
             <button
               className="block w-full overflow-hidden"
@@ -95,7 +95,7 @@ function GalleryGrid({ items }) {
             </button>
             <div className="p-4">
               <h3 className="font-semibold text-stone-900">{item.title}</h3>
-              <p className="text-sm text-amber-700">{item.category}</p>
+              <p className="text-sm text-[#6B6B6B]">{item.category}</p>
             </div>
           </article>
         ))}
