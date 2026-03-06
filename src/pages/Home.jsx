@@ -16,9 +16,9 @@ function Home() {
         <img
           src="/home-hero.png"
           alt="Aniq Salon Baghyalatha storefront"
-          className="h-[65vh] w-full object-cover"
+          className="h-[62vh] w-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/25 to-black/10" />
         <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl flex-col items-start justify-center text-white">
           <p className="animate-fade-up text-sm tracking-[0.3em] text-amber-300">
             STYLE • BEAUTY • CONFIDENCE
