@@ -14,8 +14,8 @@ function Home() {
     <main>
       <section className="relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1800&q=80"
-          alt="Aniq Salon Baghyalatha interior"
+          src="/home-hero.png"
+          alt="Aniq Salon Baghyalatha storefront"
           className="h-[65vh] w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
