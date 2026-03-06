@@ -1,6 +1,14 @@
 import { premiumServices, pricingBySection } from '../data/siteData'
 
 function Pricing() {
+  const formatPrice = (value) => {
+    if (value.toLowerCase().includes('price based on length')) {
+      return value
+    }
+
+    return `Starts from ${value} onwards`
+  }
+
   const renderTable = (title, items) => (
     <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
       <div className="bg-stone-900 px-6 py-4 text-lg font-semibold text-amber-300">
@@ -17,7 +25,9 @@ function Pricing() {
           {items.map((item) => (
             <tr key={`${title}-${item.name}`} className="border-b border-stone-100">
               <td className="px-6 py-3 text-stone-800">{item.name}</td>
-              <td className="px-6 py-3 font-medium text-amber-700">{item.price}</td>
+              <td className="px-6 py-3 font-medium text-amber-700">
+                {formatPrice(item.price)}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -29,7 +39,7 @@ function Pricing() {
     <main className="section-wrap">
       <h1 className="section-title">Pricing</h1>
       <p className="mt-3 max-w-2xl text-stone-600">
-        Updated rate card as per Aniq Unisex Salon and Tattoos pricing details.
+        Service prices are indicative and start from the listed amount onwards.
       </p>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
