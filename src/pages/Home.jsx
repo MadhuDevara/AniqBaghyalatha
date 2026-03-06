@@ -19,16 +19,18 @@ function Home() {
           className="h-[62vh] w-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/25 to-black/10" />
-        <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl flex-col items-start justify-center text-white">
-          <p className="animate-fade-up text-sm tracking-[0.3em] text-amber-300">
-            STYLE • BEAUTY • CONFIDENCE
-          </p>
-          <h1 className="animate-fade-up-delay mt-3 max-w-2xl text-4xl font-bold md:text-6xl">
-            Aniq Salon Baghyalatha
-          </h1>
-          <Link to="/book-appointment" className="btn-primary mt-6">
-            Book Appointment
-          </Link>
+        <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl items-end pb-8 md:pb-12">
+          <div className="max-w-xl rounded-2xl border border-white/20 bg-black/40 p-4 text-white backdrop-blur-sm md:p-6">
+            <p className="animate-fade-up text-xs tracking-[0.28em] text-amber-300 md:text-sm">
+              STYLE • BEAUTY • CONFIDENCE
+            </p>
+            <h1 className="animate-fade-up-delay mt-2 text-4xl font-bold leading-tight md:text-5xl">
+              Aniq Salon Baghyalatha
+            </h1>
+            <Link to="/book-appointment" className="btn-primary mt-5">
+              Book Appointment
+            </Link>
+          </div>
         </div>
       </section>
 
