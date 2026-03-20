@@ -1,7 +1,9 @@
+import PremiumIcon from './PremiumIcon'
+
 function TestimonialCard({ name, review, rating = 5 }) {
   const stars = Array.from({ length: rating }, (_, index) => (
-    <span key={`${name}-star-${index}`} aria-hidden="true">
-      ★
+    <span key={`${name}-star-${index}`} aria-hidden="true" className="inline-flex">
+      <PremiumIcon name="star" size={14} />
     </span>
   ))
 

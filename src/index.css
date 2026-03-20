@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
-  --salon-bg: #5B6471;
+  --salon-bg: #2a3140;
   --salon-text: #222222;
   --salon-primary: #000000;
   --salon-primary-hover: #333333;
@@ -14,15 +14,60 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
+  background-color: #0c0f14;
+}
+
+#root {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  min-height: 100%;
   font-family: "Poppins", "Segoe UI", Arial, sans-serif;
-  background-color: var(--salon-bg);
   color: var(--salon-text);
   letter-spacing: 0.01em;
   line-height: 1.6;
+  /* Theme lives on body so it always paints (not lost behind negative z-index / #root stacking). */
+  background-color: #0c0f14;
+  background-image:
+    radial-gradient(ellipse 130% 100% at 6% -22%, rgba(197, 157, 95, 0.38), transparent 54%),
+    radial-gradient(ellipse 90% 80% at 96% 108%, rgba(0, 0, 0, 0.65), transparent 52%),
+    linear-gradient(168deg, #12161f 0%, var(--salon-bg) 45%, #161b26 100%);
+  background-size: 100% 100%, 100% 100%, 220% 220%;
+  background-position: 0% 0%, 0% 0%, 0% 42%;
+  background-attachment: fixed;
+  animation: navGradientShift 14s ease-in-out infinite alternate;
+}
+
+/* Optional overlay (GradientBackground) — matches body theme */
+.page-gradient-bg {
+  background:
+    radial-gradient(ellipse 130% 100% at 6% -22%, rgba(197, 157, 95, 0.25), transparent 54%),
+    radial-gradient(ellipse 90% 80% at 96% 108%, rgba(0, 0, 0, 0.5), transparent 52%),
+    linear-gradient(168deg, #12161f 0%, var(--salon-bg) 45%, #161b26 100%);
+  background-size: 100% 100%, 100% 100%, 220% 220%;
+  background-position: 0% 0%, 0% 0%, 0% 42%;
+  animation: navGradientShift 14s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .page-gradient-bg {
+    animation: none;
+    background-size: auto, auto, 100% 100%;
+    background-position: 0% 0%, 0% 0%, 50% 50%;
+  }
+}
+
+@keyframes navGradientShift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 32%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 0%, 100% 58%;
+  }
 }
 
 h1,
@@ -71,7 +116,9 @@ h4 {
   background: linear-gradient(135deg, #d4b076, #c59d5f);
   color: #111111;
   padding: 0.35rem 0.9rem 0.45rem;
-  box-shadow: 0 8px 18px rgba(197, 157, 95, 0.3);
+  box-shadow:
+    0 8px 18px rgba(197, 157, 95, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
@@ -79,6 +126,128 @@ h4 {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(197, 157, 95, 0.38);
   filter: brightness(1.03);
+}
+
+/* Gold-frame cards (was documented but never wired — without this, inners are transparent on dark theme) */
+.about-card-gold-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.about-card-gold-border-sm {
+  border-radius: 1.25rem;
+}
+
+.about-card-gold-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d4af37, #c59d5f, #e8c77b, #c59d5f, #d4af37);
+  background-size: 200% 100%;
+  animation: goldBorderShimmer 4s linear infinite;
+}
+
+.about-card-gold-border-inner {
+  position: relative;
+  z-index: 1;
+  background: #f4f4f6;
+  border-radius: calc(1.5rem - 2px);
+}
+
+.about-card-gold-border-sm .about-card-gold-border-inner {
+  border-radius: calc(1.25rem - 2px);
+}
+
+.about-card-gold-border-inner--light {
+  background: rgba(252, 252, 254, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.about-card-gold-border-inner--dark {
+  background: rgba(18, 22, 32, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 157, 95, 0.35);
+}
+
+@keyframes goldBorderShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card-gold-border::before {
+    animation: none;
+  }
+}
+
+.billing-panel {
+  background: rgba(15, 23, 42, 0.96) !important;
+  color: #e2e8f0;
+}
+
+/* Premium service chips on Home / Services */
+.btn-neon-chip {
+  position: relative;
+  padding: 2px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-neon-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #4b5563, #6b7280);
+  opacity: 0.65;
+}
+
+.btn-neon-chip.is-selected::before {
+  background: linear-gradient(90deg, #d4af37, #c59d5f, #e8c77b, #c59d5f);
+  background-size: 200% 100%;
+  opacity: 1;
+  animation: goldBorderShimmer 4s linear infinite;
+}
+
+.btn-neon-chip-inner {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: #1a1f2e;
+  color: #ece8df;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-neon-chip.is-selected .btn-neon-chip-inner {
+  background: #12161f;
+  color: #f8edd8;
+  border-color: rgba(197, 157, 95, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-neon-chip.is-selected::before {
+    animation: none;
+    background-position: 50% 50%;
+  }
 }
 
 .btn-primary {
@@ -115,6 +284,12 @@ h4 {
   background: rgba(0, 0, 0, 0.12);
   border-color: rgba(107, 107, 107, 0.45);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.14);
+}
+
+.about-card-gold-border-inner--light .glass-card:hover {
+  background: #ffffff;
+  border-color: rgba(197, 157, 95, 0.35);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.08);
 }
 
 .gallery img {
@@ -245,5 +420,228 @@ h4 {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* FullScreenGalleryLightbox — portal to body; was missing all styles so clicks did nothing visible */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  box-sizing: border-box;
+  background: rgba(6, 8, 14, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox:fullscreen {
+  background: #050608;
+}
+
+.lightbox > .viewer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  padding: 3.25rem clamp(2.75rem, 8vw, 4.5rem);
+  min-height: 0;
+}
+
+.lightbox .nav-left,
+.lightbox .nav-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.lightbox .nav-left button,
+.lightbox .nav-right button,
+.lightbox .close-left button,
+.lightbox .top-controls button,
+.lightbox .nav-left-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lightbox .nav-left button:hover,
+.lightbox .nav-right button:hover,
+.lightbox .close-left button:hover,
+.lightbox .top-controls button:hover,
+.lightbox .nav-left-btn:hover {
+  background: rgba(197, 157, 95, 0.35);
+  border-color: rgba(197, 157, 95, 0.55);
+  transform: scale(1.05);
+}
+
+.lightbox .nav-left-btn {
+  display: none;
+}
+
+.lightbox.fullscreen .nav-left {
+  display: none !important;
+}
+
+.lightbox.fullscreen .nav-left-btn {
+  display: inline-flex;
+  position: fixed;
+  left: max(0.75rem, env(safe-area-inset-left));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100003;
+}
+
+.lightbox > .close-left {
+  position: fixed;
+  left: max(0.75rem, env(safe-area-inset-left));
+  top: max(0.75rem, env(safe-area-inset-top));
+  z-index: 100002;
+}
+
+.lightbox > .top-controls {
+  position: fixed;
+  right: max(0.75rem, env(safe-area-inset-right));
+  top: max(0.75rem, env(safe-area-inset-top));
+  z-index: 100002;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.lightbox .image-center {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+
+.lightbox-slide-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: calc(100vh - 7rem);
+}
+
+.lightbox-slide-wrapper.lightbox-slide-left {
+  animation: lightboxSlideIn 0.32s ease-out;
+}
+
+.lightbox-slide-wrapper.lightbox-slide-right {
+  animation: lightboxSlideIn 0.32s ease-out;
+}
+
+@keyframes lightboxSlideIn {
+  from {
+    opacity: 0.35;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-slide-wrapper.lightbox-slide-left,
+  .lightbox-slide-wrapper.lightbox-slide-right {
+    animation: none;
+  }
+}
+
+.lightbox-image {
+  max-width: min(96vw, 1200px);
+  max-height: min(78vh, 900px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.lightbox .right-panel {
+  flex-shrink: 0;
+  width: min(17rem, 28vw);
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  color: #e2e8f0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lightbox .lightbox-position {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.65);
+}
+
+.lightbox .lightbox-title {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fafaf9;
+}
+
+.lightbox .lightbox-category {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c59d5f;
+}
+
+.lightbox .lightbox-description {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(226, 232, 240, 0.82);
+}
+
+@media (max-width: 900px) {
+  .lightbox > .viewer {
+    padding: 3rem 0.5rem 1rem;
+  }
+
+  .lightbox .right-panel {
+    display: none;
+  }
+
+  .lightbox-image {
+    max-height: min(72vh, 100%);
   }
 }

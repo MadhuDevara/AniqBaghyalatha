@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TestimonialCard from '../components/TestimonialCard'
+import PremiumIcon from '../components/PremiumIcon'
 import {
   contactInfo,
   galleryItems,
+  heroTrustBadges,
   premiumServices,
   testimonials,
   workingHours,
@@ -11,52 +13,36 @@ import {
 
 const premiumServiceDetails = {
   Keratin: {
-    description:
-      'Keratin treatment smooths frizz, adds shine, and makes daily hair management easier.',
-    usage:
-      'Best for dry, frizzy, or chemically treated hair that needs softness and controlled texture.',
+    description: 'Keratin treatment smooths frizz, adds shine, and makes daily hair management easier.',
+    usage: 'Best for dry, frizzy, or chemically treated hair that needs softness and controlled texture.',
   },
   Botox: {
-    description:
-      'Hair Botox is a deep conditioning repair treatment that restores softness and improves hair health.',
-    usage:
-      'Ideal for damaged, dull, and brittle hair from heat styling, coloring, or pollution exposure.',
+    description: 'Hair Botox is a deep conditioning repair treatment that restores softness and improves hair health.',
+    usage: 'Ideal for damaged, dull, and brittle hair from heat styling, coloring, or pollution exposure.',
   },
   'Nano Plastia': {
-    description:
-      'Nano Plastia is an advanced smoothing treatment that straightens and nourishes without harsh finish.',
-    usage:
-      'Suitable for clients wanting long-lasting smoothness with a natural look and reduced puffiness.',
+    description: 'Nano Plastia is an advanced smoothing treatment that straightens and nourishes without harsh finish.',
+    usage: 'Suitable for clients wanting long-lasting smoothness with a natural look and reduced puffiness.',
   },
   'Bio-Plastia': {
-    description:
-      'Bio-Plastia combines organic nourishment with texture control for silky, polished hair.',
-    usage:
-      'Recommended for frizzy and uneven hair textures that need clean, premium smoothing care.',
+    description: 'Bio-Plastia combines organic nourishment with texture control for silky, polished hair.',
+    usage: 'Recommended for frizzy and uneven hair textures that need clean, premium smoothing care.',
   },
   'Hair Smoothing': {
-    description:
-      'Hair smoothing reduces volume and frizz while keeping hair soft, manageable, and glossy.',
-    usage:
-      'Great for daily styling convenience and for people who want neat, salon-finish hair.',
+    description: 'Hair smoothing reduces volume and frizz while keeping hair soft, manageable, and glossy.',
+    usage: 'Great for daily styling convenience and for people who want neat, salon-finish hair.',
   },
   Straightening: {
-    description:
-      'Hair straightening gives a sleek, straight finish and reduces styling effort for weeks.',
-    usage:
-      'Best for curly or wavy hair clients who prefer a straight, tidy, low-maintenance appearance.',
+    description: 'Hair straightening gives a sleek, straight finish and reduces styling effort for weeks.',
+    usage: 'Best for curly or wavy hair clients who prefer a straight, tidy, low-maintenance appearance.',
   },
   Perming: {
-    description:
-      'Perming adds curls or waves with long-lasting texture and shape definition.',
-    usage:
-      'Useful for people wanting volume and style transformation without daily curling routines.',
+    description: 'Perming adds curls or waves with long-lasting texture and shape definition.',
+    usage: 'Useful for people wanting volume and style transformation without daily curling routines.',
   },
   'Hair Fall & Anti Dandruff Spa': {
-    description:
-      'A scalp-focused spa treatment to reduce hair fall, calm dandruff, and improve scalp balance.',
-    usage:
-      'Recommended for weak roots, flaky scalp, or hair-thinning concerns needing regular care.',
+    description: 'A scalp-focused spa treatment to reduce hair fall, calm dandruff, and improve scalp balance.',
+    usage: 'Recommended for weak roots, flaky scalp, or hair-thinning concerns needing regular care.',
   },
 }
 
@@ -140,6 +126,12 @@ function Home() {
   useEffect(() => {
     if (selectedGalleryIndex === null) return undefined
 
+    // Prevent background scroll while the preview is open.
+    const prevBodyOverflow = document.body.style.overflow
+    const prevHtmlOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') closeGalleryPreview()
       if (event.key === 'ArrowLeft') showPreviousGalleryImage()
@@ -147,59 +139,112 @@ function Home() {
     }
 
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = prevBodyOverflow
+      document.documentElement.style.overflow = prevHtmlOverflow
+    }
   }, [selectedGalleryIndex, homeGalleryItems.length])
 
   return (
     <main>
-      <section className="home-hero relative overflow-hidden">
+      <section className="home-hero relative min-h-[60vh] overflow-hidden">
         <img
           key={heroImages[activeHeroIndex]?.image}
           src={heroImages[activeHeroIndex]?.image || '/home-hero.png'}
           alt={heroImages[activeHeroIndex]?.title || 'Aniq Salon Baghyalatha'}
-          className="h-[75vh] w-full object-cover transition-opacity duration-1000 ease-in-out"
+          className="absolute inset-0 z-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/20 to-black/10" />
-        <div className="absolute inset-0 mx-auto flex w-[92%] max-w-7xl items-end pb-8 md:pb-12">
-          <div className="max-w-md rounded-2xl border border-white/20 bg-black/40 p-4 text-white backdrop-blur-sm md:p-5">
-            <p className="ui-label animate-fade-up text-xs text-amber-300 md:text-sm">
-              S T Y L E • B E A U T Y • C O N F I D E N C E
-            </p>
-            <h1 className="animate-fade-up-delay mt-2 text-4xl font-bold leading-tight md:text-[3rem]">
-              Aniq Salon Baghyalatha
-            </h1>
-            <p className="ui-label mt-2 text-xs font-medium text-amber-200 md:text-sm">
-              Unisex Beauty Salon | Hair | Beauty | Tattoo Studio
-            </p>
-            <Link to="/book-appointment" className="btn-primary mt-5">
-              Book Appointment
-            </Link>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
+
+        <div className="hero-content-wrapper relative flex min-h-[60vh] w-full items-center border-2 border-amber-400/60 px-6 py-8 md:px-10 md:py-10 lg:px-12">
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="hero-glass-card max-w-xl px-5 py-5 text-white md:px-6 md:py-6 ml-6 md:ml-8 lg:ml-10">
+              <p className="ui-label animate-fade-up text-xs tracking-[0.25em] text-amber-300/90 md:text-sm">
+                STYLE • BEAUTY • CONFIDENCE
+              </p>
+              <h1 className="animate-fade-up-delay mt-3 text-3xl font-bold leading-[1.1] md:text-4xl lg:text-5xl">
+                <span className="block">Aniq Salon</span>
+                <span className="block bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
+                  Baghyalatha
+                </span>
+              </h1>
+              <p className="ui-label mt-3 text-sm font-medium text-stone-200 md:text-base">
+                Premium Unisex Salon
+              </p>
+              <p className="mt-1 text-sm text-amber-100 md:text-base">
+                Hair • Beauty • Tattoo Studio
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  to="/book-appointment"
+                  className="hero-cta-primary"
+                >
+                  Book Appointment
+                </Link>
+                <Link
+                  to="/services"
+                  className="hero-cta-secondary"
+                >
+                  Explore Services
+                </Link>
+              </div>
+
+              <div className="mt-5 flex flex-col gap-3 border-t border-white/5 pt-4 md:flex-row md:gap-5">
+                {heroTrustBadges.map((badge) => {
+                  const content = (
+                    <>
+                      <PremiumIcon name={badge.icon} size={16} className="opacity-90" />
+                      <span className="badge-value">{badge.label}</span>
+                      <span className="badge-sublabel">{badge.sublabel}</span>
+                    </>
+                  )
+                  return badge.href ? (
+                    <a
+                      key={badge.sublabel}
+                      href={badge.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-trust-badge opacity-90"
+                      aria-label={`${badge.label} ${badge.sublabel} - View on Google`}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={badge.sublabel} className="hero-trust-badge opacity-90">
+                      {content}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
         {heroImages.length > 1 && (
           <>
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 px-3 py-2 text-2xl text-white hover:bg-black/50"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-3 text-2xl text-white backdrop-blur-sm transition-all hover:bg-black/60 hover:scale-110 md:left-6"
               onClick={showPreviousHero}
               aria-label="Previous hero image"
             >
               ‹
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 px-3 py-2 text-2xl text-white hover:bg-black/50"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-3 text-2xl text-white backdrop-blur-sm transition-all hover:bg-black/60 hover:scale-110 md:right-6"
               onClick={showNextHero}
               aria-label="Next hero image"
             >
               ›
             </button>
 
-            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+            <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
               {heroImages.map((image, index) => (
                 <button
                   key={`hero-dot-${image.title}`}
-                  className={`h-2.5 w-2.5 rounded-full transition ${
-                    activeHeroIndex === index ? 'bg-amber-400' : 'bg-white/60'
+                  className={`hero-slider-dot ${
+                    activeHeroIndex === index ? 'active' : ''
                   }`}
                   onClick={() => setActiveHeroIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
@@ -211,7 +256,8 @@ function Home() {
       </section>
 
       <section className="section-wrap-home fade-up">
-        <div className="grid items-center gap-7 rounded-3xl border border-black/10 bg-white p-5 shadow-sm md:grid-cols-2 md:p-8">
+        <div className="about-card-gold-border">
+          <div className="about-card-gold-border-inner grid items-center gap-7 p-5 shadow-sm md:grid-cols-2 md:p-8">
           <img
             src={aboutImage || '/home-hero.png'}
             alt="Aniq Salon interior"
@@ -237,24 +283,22 @@ function Home() {
               </Link>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       <section className="section-wrap-home fade-up">
-        <h2 className="section-title section-title-floater">Premium Services</h2>
-        <div className="mt-8 rounded-3xl border border-black/10 bg-white p-5 shadow-sm md:p-7">
+        <h2 className="section-title section-title-floater"><span className="relative z-10">Premium Services</span></h2>
+        <div className="about-card-gold-border mt-8">
+          <div className="about-card-gold-border-inner p-5 md:p-7">
           <div className="flex flex-wrap gap-2.5">
             {premiumServices.map((service) => (
               <button
                 key={service}
-                className={`rounded-full border border-black/10 px-3 py-1 text-sm shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
-                  selectedPremiumService === service
-                    ? 'bg-black/75 text-white'
-                    : 'bg-white text-[#222222] hover:bg-black/75 hover:text-white'
-                }`}
+                className={`btn-neon-chip ${selectedPremiumService === service ? 'is-selected' : ''}`}
                 onClick={() => setSelectedPremiumService(service)}
               >
-                {service}
+                <span className="btn-neon-chip-inner">{service}</span>
               </button>
             ))}
           </div>
@@ -271,64 +315,69 @@ function Home() {
             </div>
           )}
           <p className="mt-3 text-sm text-[#6B6B6B]">* Conditions apply.</p>
+          </div>
         </div>
       </section>
 
-      <section className="section-wrap-home fade-up rounded-3xl bg-[#ECECEC]/70">
-        <h2 className="section-title section-title-floater">Why Choose Us</h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <article className="glass-card p-5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-xl">
-              🧼
+      <section className="section-wrap-home fade-up">
+        <h2 className="section-title section-title-floater"><span className="relative z-10">Why Choose Us</span></h2>
+        <div className="about-card-gold-border mt-8">
+          <div className="about-card-gold-border-inner about-card-gold-border-inner--light rounded-3xl px-6 py-8 md:px-10 md:py-10">
+        <div className="grid max-w-6xl mx-auto gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <article className="glass-card p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/10">
+              <PremiumIcon name="hygiene" size={22} />
             </div>
-            <h3 className="mt-3 font-semibold text-stone-900">Clean & Hygienic</h3>
-            <p className="mt-2 text-sm text-stone-600">
+            <h3 className="mt-4 font-semibold text-stone-900">Clean & Hygienic</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
               Strict hygiene standards for a safe and comfortable salon visit.
             </p>
           </article>
-          <article className="glass-card p-5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-xl">
-              💼
+          <article className="glass-card p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/10">
+              <PremiumIcon name="stylists" size={22} />
             </div>
-            <h3 className="mt-3 font-semibold text-stone-900">
+            <h3 className="mt-4 font-semibold text-stone-900">
               Experienced Stylists
             </h3>
-            <p className="mt-2 text-sm text-stone-600">
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
               Skilled professionals who personalize every look to your preference.
             </p>
           </article>
-          <article className="glass-card p-5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-xl">
-              💎
+          <article className="glass-card p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/10">
+              <PremiumIcon name="premium" size={22} />
             </div>
-            <h3 className="mt-3 font-semibold text-stone-900">Premium Products</h3>
-            <p className="mt-2 text-sm text-stone-600">
+            <h3 className="mt-4 font-semibold text-stone-900">Premium Products</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
               Quality products selected for long-lasting, salon-finish results.
             </p>
           </article>
-          <article className="glass-card p-5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-xl">
-              📅
+          <article className="glass-card p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/10">
+              <PremiumIcon name="booking" size={22} />
             </div>
-            <h3 className="mt-3 font-semibold text-stone-900">Easy Booking</h3>
-            <p className="mt-2 text-sm text-stone-600">
+            <h3 className="mt-4 font-semibold text-stone-900">Easy Booking</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
               Fast appointment booking with quick phone and WhatsApp support.
             </p>
           </article>
         </div>
+          </div>
+        </div>
       </section>
 
       <section className="section-wrap-home fade-up gallery">
-        <h2 className="section-title section-title-floater">Our Work / Gallery</h2>
-        <p className="mt-3 max-w-2xl text-stone-600">
+        <h2 className="section-title section-title-floater"><span className="relative z-10">Our Work / Gallery</span></h2>
+        <p className="mt-3 max-w-2xl text-stone-200">
           Real transformations in haircuts, beard styling, coloring, facials, and salon grooming.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {homeGalleryItems.map((item, index) => (
-            <article
-              key={`home-${item.title}`}
-              className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gray-400 hover:bg-gray-100/70 hover:shadow-xl"
-            >
+            <div key={`home-${item.title}`} className="about-card-gold-border about-card-gold-border-sm">
+              <article
+                className="about-card-gold-border-inner overflow-hidden border-0 border-stone-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gray-400 hover:bg-gray-100/70 hover:shadow-xl"
+              >
               <button
                 className="block w-full overflow-hidden"
                 onClick={() => setSelectedGalleryIndex(index)}
@@ -346,6 +395,7 @@ function Home() {
                 <p className="text-sm text-[#6B6B6B]">{item.category}</p>
               </div>
             </article>
+            </div>
           ))}
         </div>
         <div className="mt-6">
@@ -355,17 +405,22 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-wrap-home fade-up rounded-3xl bg-[#ECECEC]/70">
-        <h2 className="section-title section-title-floater">Customer Reviews</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+      <section className="section-wrap-home fade-up">
+        <h2 className="section-title section-title-floater"><span className="relative z-10">Customer Reviews</span></h2>
+        <div className="about-card-gold-border mt-8">
+          <div className="about-card-gold-border-inner about-card-gold-border-inner--light rounded-3xl px-6 py-8 md:px-10 md:py-10">
+        <div className="grid max-w-5xl mx-auto gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.name} rating={5} {...testimonial} />
           ))}
         </div>
+          </div>
+        </div>
       </section>
 
       <section className="section-wrap-home fade-up">
-        <div className="rounded-3xl bg-black px-6 py-10 text-center text-white md:px-10">
+        <div className="about-card-gold-border">
+          <div className="about-card-gold-border-inner about-card-gold-border-inner--dark rounded-3xl px-6 py-10 text-center text-white md:px-10">
           <p className="ui-label text-xs font-semibold text-white/70">
             READY FOR YOUR NEXT LOOK?
           </p>
@@ -391,12 +446,14 @@ function Home() {
               Chat on WhatsApp
             </a>
           </div>
+          </div>
         </div>
       </section>
 
       <section className="section-wrap-home">
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-black p-6 text-white shadow-lg">
+          <div className="about-card-gold-border about-card-gold-border-sm">
+            <div className="about-card-gold-border-inner about-card-gold-border-inner--dark border border-white/10 p-6 text-white shadow-lg">
             <h3 className="text-2xl font-semibold text-white">
               Working Hours
             </h3>
@@ -420,6 +477,7 @@ function Home() {
               >
                 WhatsApp
               </a>
+            </div>
             </div>
           </div>
 

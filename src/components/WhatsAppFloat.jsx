@@ -4,12 +4,12 @@ function WhatsAppFloat() {
   const phoneNumber = contactInfo.whatsapp
   const whatsappNumber = contactInfo.whatsapp.replace('+', '')
   const sharedButtonClass =
-    'group relative flex h-11 w-11 items-center justify-center rounded-xl text-lg text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg md:h-12 md:w-12'
+    'float-dock-item group relative flex h-11 w-11 items-center justify-center rounded-xl text-lg text-white shadow-md md:h-12 md:w-12'
   const sharedTooltipClass =
     'pointer-events-none absolute right-full mr-2 hidden whitespace-nowrap rounded-md bg-black/85 px-2 py-1 text-xs font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:block'
 
   return (
-    <div className="fixed bottom-24 right-4 z-50 flex flex-col gap-2 md:bottom-8">
+    <div className="float-dock fixed bottom-24 right-4 z-50 gap-2 md:bottom-8">
       <a
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"

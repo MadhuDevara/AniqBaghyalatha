@@ -1,3 +1,14 @@
+export const heroTrustBadges = [
+  {
+    icon: 'star',
+    label: '4.8',
+    sublabel: 'Google Rating',
+    href: 'https://www.google.com/maps/place/ANIQ+-+Unisex+Salon+%26+Tattoos+-+Shanti+nagar+X+road+(+Bhagyalatha+colony)/@17.3278416,78.5850334,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcba18e9c001801:0x6f7250c6da1e97ee!8m2!3d17.3278365!4d78.5876083!16s%2Fg%2F11w8yg8hvc',
+  },
+  { icon: 'locationPin', label: 'Opened', sublabel: '2024' },
+  { icon: 'users', label: '5000+', sublabel: 'Happy Customers' },
+]
+
 export const contactInfo = {
   phone: '9666833811',
   phoneLink: '+919666833811',
@@ -5,6 +16,8 @@ export const contactInfo = {
   contactLine: '📞 9666833811 / ☎️040-24201515',
   whatsapp: '+919666833811',
   instagram: 'https://www.instagram.com/aniq_salon_bhagyalathacolony/',
+  facebook: 'https://www.facebook.com/profile.php?id=61565223871614',
+  franchisePhone: '8143266223',
   address:
     'Rama devi arcade, Shanti nagar X road, Bhagyalatha Colony, Hayathnagar, Hyderabad, Telangana 500070',
   mapLink:
@@ -23,134 +36,161 @@ export const workingHours = [
   { day: 'Sunday', time: '8:00 AM - 10:30 PM' },
 ]
 
-export const services = [
-  {
-    name: 'Haircut',
-    icon: '✂️',
-    price: 149,
-    category: 'Haircuts',
-    duration: '30-45 mins',
-    description: 'Precision haircut tailored to your face shape and style preference.',
-  },
-  {
-    name: 'Hair Styling',
-    icon: '💇',
-    price: 349,
-    category: 'Haircuts',
-    duration: '45-60 mins',
-    description: 'Professional styling for daily elegance, parties, and special occasions.',
-  },
-  {
-    name: 'Hair Coloring',
-    icon: '🎨',
-    price: 249,
-    category: 'Haircuts',
-    duration: '60-120 mins',
-    description: 'Trendy color application with consultation based on hair type and length.',
-  },
-  {
-    name: 'Hair Spa',
-    icon: '🧖',
-    price: 599,
-    category: 'Haircuts',
-    duration: '45-60 mins',
-    description: 'Nourishing hair spa treatment for smoother, healthier, and softer hair.',
-  },
-  {
-    name: 'Beard Trim / Shape',
-    icon: '🧔',
-    price: 69,
-    category: 'Haircuts',
-    duration: '20-30 mins',
-    description: 'Clean and defined beard shaping to elevate your overall grooming look.',
-  },
-  {
-    name: 'Facial',
-    icon: '✨',
-    price: 599,
-    category: 'Makeup',
-    duration: '45-75 mins',
-    description: 'Deep cleansing and glow-enhancing facial based on your skin concerns.',
-  },
-  {
-    name: 'Skin Care',
-    icon: '🌸',
-    price: 249,
-    category: 'Makeup',
-    duration: '30-45 mins',
-    description: 'Targeted skin care session focused on hydration, tone, and refresh.',
-  },
-  {
-    name: 'Bridal Makeup',
-    icon: '👰',
-    price: 12000,
-    category: 'Bridal Looks',
-    duration: '150-240 mins',
-    description: 'Complete bridal makeover with premium products for long-lasting finish.',
-  },
-  {
-    name: 'Threading (Eyebrows)',
-    icon: '🪞',
-    price: 49,
-    category: 'Makeup',
-    duration: '10-15 mins',
-    description: 'Neat eyebrow shaping for a sharper and balanced facial look.',
-  },
-  {
-    name: 'Waxing',
-    icon: '🕯️',
-    price: 300,
-    category: 'Makeup',
-    duration: '20-45 mins',
-    description: 'Smooth and hygienic waxing service with skin-friendly care process.',
-  },
-  {
-    name: 'Manicure',
-    icon: '💅',
-    price: 399,
-    category: 'Salon Interior',
-    duration: '30-45 mins',
-    description: 'Nail and hand grooming for clean, polished, and healthy-looking hands.',
-  },
-  {
-    name: 'Pedicure',
-    icon: '🦶',
-    price: 499,
-    category: 'Salon Interior',
-    duration: '40-55 mins',
-    description: 'Relaxing foot care and nail treatment for refreshed and tidy feet.',
-  },
-]
+export const categoryLabels = {
+  grooming: 'Grooming',
+  detan: 'Detan',
+  facials: 'Facials',
+  cleanUps: 'Clean Ups',
+  colours: "Colour's",
+  manicure: 'Manicure',
+  pedicure: 'Pedicure',
+  oilMassage: 'Oil Massage (Head)',
+  hairSpa: 'Hair Spa',
+  maleKids: 'Male Kids',
+  femaleKids: 'Female Kids',
+}
+
+const menuSection = {
+  grooming: 'Male',
+  detan: 'Female',
+  facials: 'Female',
+  cleanUps: 'Female',
+  colours: 'Female',
+  manicure: 'Female',
+  pedicure: 'Female',
+  oilMassage: 'Male',
+  hairSpa: 'Female',
+  maleKids: 'Kids',
+  femaleKids: 'Kids',
+}
+
+export const categoryIcons = {
+  grooming: 'scissors',
+  detan: 'sparkles',
+  facials: 'facial',
+  cleanUps: 'hygiene',
+  colours: 'palette',
+  manicure: 'nail',
+  pedicure: 'foot',
+  oilMassage: 'headMassage',
+  hairSpa: 'steam',
+  maleKids: 'boy',
+  femaleKids: 'girl',
+}
+
+export const menuPricing = {
+  grooming: [
+    { name: 'Any Hair Cut', price: '₹149/-' },
+    { name: 'Shaving / Trimming', price: '₹69/-' },
+    { name: 'Hair Wash', price: '₹49/-' },
+    { name: 'Hair Straightening', price: '₹999/-' },
+    { name: 'Hair Keratin', price: '₹1999/-' },
+  ],
+  detan: [
+    { name: 'Only Face', price: '₹249/-' },
+    { name: 'Only Neck', price: '₹99/-' },
+    { name: 'O3 (Face)', price: '₹399/-' },
+    { name: 'Saga (Face)', price: '₹299/-' },
+    { name: 'Face & Neck', price: '₹299/-' },
+    { name: 'Half Hands', price: '₹399/-' },
+    { name: 'Full Hands', price: '₹599/-' },
+    { name: 'Full Body', price: '₹1999/-' },
+    { name: 'Feet', price: '₹299/-' },
+    { name: 'Legs', price: '₹999/-' },
+  ],
+  facials: [
+    { name: 'Face Scrub', price: '₹249/-' },
+    { name: 'Face Scrub With Steam', price: '₹349/-' },
+    { name: 'Fruit', price: '₹799/-' },
+    { name: 'Vitamin', price: '₹799/-' },
+    { name: 'Silver', price: '₹1399/-' },
+    { name: 'Gold', price: '₹1499/-' },
+    { name: 'Diamond', price: '₹1599/-' },
+    { name: 'Pearl', price: '₹1299/-' },
+    { name: 'Lotus', price: '₹1499/-' },
+    { name: 'Jovees Gold', price: '₹1799/-' },
+    { name: 'Whitening', price: '₹899/-' },
+    { name: 'Shahnaz Gold', price: '₹2199/-' },
+    { name: 'Shahnaz Diamond', price: '₹2499/-' },
+    { name: 'Bridal Special (O3)', price: '₹3499/-' },
+    { name: 'Special Hydra', price: '₹2499/-' },
+  ],
+  cleanUps: [
+    { name: 'Fruit', price: '₹499/-' },
+    { name: 'Pearl', price: '₹499/-' },
+    { name: 'Papaya', price: '₹599/-' },
+    { name: 'Gold', price: '₹699/-' },
+    { name: 'Diamond', price: '₹799/-' },
+    { name: 'Luxury', price: '₹999/-' },
+    { name: 'O3', price: '₹1199/-' },
+  ],
+  colours: [
+    { name: 'Natural Black (Gel)', price: '₹249/-' },
+    { name: 'Streax Natural Black', price: '₹299/-' },
+    { name: 'Streax Burgundy', price: '₹299/-' },
+    { name: 'Matrix Natural Black', price: '₹399/-' },
+    { name: 'Revlon Natural Black', price: '₹399/-' },
+    { name: 'Loreal Natural Black', price: '₹499/-' },
+    { name: 'Loreal Inoa Natural Black', price: '₹599/-' },
+  ],
+  manicure: [
+    { name: 'Basic', price: '₹299/-' },
+    { name: 'Advanced', price: '₹399/-' },
+    { name: 'Crystal', price: '₹599/-' },
+    { name: 'Luxury', price: '₹699/-' },
+  ],
+  pedicure: [
+    { name: 'Basic', price: '₹399/-' },
+    { name: 'Advanced', price: '₹599/-' },
+    { name: 'Crystal', price: '₹799/-' },
+    { name: 'Luxury', price: '₹999/-' },
+  ],
+  oilMassage: [
+    { name: 'Coconut', price: '₹99/-' },
+    { name: 'Cool', price: '₹99/-' },
+    { name: 'Almond', price: '₹99/-' },
+    { name: 'Warm Oil Massage', price: '₹149/-' },
+    { name: 'Warm Oil Massage & Steam', price: '₹249/-' },
+    { name: 'Head Wash', price: '₹49/-' },
+  ],
+  hairSpa: [
+    { name: 'Basic', price: '₹599/-' },
+    { name: 'Matrix', price: '₹699/-' },
+    { name: 'Loreal', price: '₹799/-' },
+    { name: 'Schozcoff', price: '₹899/-' },
+    { name: 'Loreal Anti Dandruff', price: '₹899/-' },
+  ],
+  maleKids: [
+    { name: 'Hair Cut', price: '₹99/-' },
+    { name: 'Hair Wash', price: '₹49/-' },
+    { name: 'Shaving / Trimming', price: '₹69/-' },
+  ],
+  femaleKids: [
+    { name: 'Hair Cut', price: '₹99/-' },
+    { name: 'Hair Wash', price: '₹49/-' },
+    { name: 'Basic Manicure', price: '₹249/-' },
+    { name: 'Basic Pedicure', price: '₹349/-' },
+  ],
+}
+
+const parsePrice = (str) => parseInt(str.replace(/[^\d]/g, ''), 10) || 0
+
+export const services = Object.entries(menuPricing).flatMap(([key, items]) =>
+  items.map((item) => ({
+    name: item.name,
+    icon: categoryIcons[key] || '✨',
+    price: parsePrice(item.price),
+    category: categoryLabels[key] || key,
+    section: menuSection[key] || 'Female',
+    description: `${item.name} — as per menu.`,
+  })),
+)
+
+export const filterCategories = ['All', 'Male', 'Female', 'Kids']
 
 export const pricingBySection = {
-  male: [
-    { name: 'Haircut', price: '₹149/-' },
-    { name: 'Beard / Shape', price: '₹69/-' },
-    { name: 'Hair Colour', price: '₹249/-' },
-    { name: 'Facial', price: '₹599/-' },
-    { name: 'D-Tan / Scrub', price: '₹249/-' },
-    { name: 'Clean Up', price: '₹499/-' },
-    { name: 'Hair Spa', price: '₹599/-' },
-    { name: 'Head Massage', price: '₹99/-' },
-    { name: 'Manicure', price: '₹399/-' },
-    { name: 'Pedicure', price: '₹499/-' },
-    { name: 'Hydra Clean Up', price: '₹1499/-' },
-    { name: 'Tattoo (per inch)', price: '₹349/-*' },
-  ],
-  female: [
-    { name: 'Haircut', price: '₹349/-*' },
-    { name: 'Eye Brows', price: '₹49/-*' },
-    { name: 'Hair Colour', price: 'Price based on length' },
-    { name: 'Facial', price: '₹599/-*' },
-    { name: 'D-Tan / Scrub', price: '₹249/-*' },
-    { name: 'Clean Up', price: '₹499/-' },
-    { name: 'Hair Spa', price: '₹699/-*' },
-    { name: 'Waxing', price: '₹300/-*' },
-    { name: 'Manicure', price: '₹399/-' },
-    { name: 'Pedicure', price: '₹499/-' },
-    { name: 'Hydra Facial', price: '₹1999/-*' },
-    { name: 'Tattoo Removal (per inch)', price: '₹499/-*' },
-  ],
+  male: [...menuPricing.grooming, ...menuPricing.oilMassage, ...menuPricing.manicure, ...menuPricing.pedicure],
+  female: [...menuPricing.facials, ...menuPricing.cleanUps, ...menuPricing.manicure, ...menuPricing.pedicure],
 }
 
 export const premiumServices = [
@@ -186,80 +226,101 @@ export const featuredServices = services.slice(0, 3)
 
 export const galleryItems = [
   {
+    id: 'classic-layer-cut',
     title: 'Classic Layer Cut',
     category: 'Haircuts',
     image:
       'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'modern-bob-styling',
     title: 'Modern Bob Styling',
     category: 'Haircuts',
     image:
       'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'party-glam-makeup',
     title: 'Party Glam Makeup',
     category: 'Makeup',
     image:
       'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'bridal-signature-look',
     title: 'Bridal Signature Look',
     category: 'Bridal Looks',
     image:
       'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'premium-bridal-styling',
     title: 'Premium Bridal Styling',
     category: 'Bridal Looks',
     image:
       'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'traditional-bridal-portrait',
     title: 'Traditional Bridal Portrait',
     category: 'Bridal Looks',
     image:
       'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'bridal-hd-makeover',
     title: 'Bridal HD Makeover',
     category: 'Bridal Looks',
     image:
       'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80',
   },
   {
+    id: 'salon-interior-1',
     title: 'Salon Interior 1',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-1.png',
+    caption: 'Styling floor with premium chairs and a clean, modern layout.',
   },
   {
+    id: 'salon-interior-2',
     title: 'Salon Interior 2',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-2.png',
+    caption: 'Reception and branding area at Aniq Salon Baghyalatha.',
   },
   {
+    id: 'salon-interior-3',
     title: 'Salon Interior 3',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-3.png',
+    caption: 'Comfortable waiting and service zones for clients.',
   },
   {
+    id: 'salon-interior-4',
     title: 'Salon Interior 4',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-4.png',
+    caption: 'Bright, hygienic workspace designed for unisex grooming.',
   },
   {
+    id: 'salon-interior-5',
     title: 'Salon Interior 5',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-5.png',
+    caption: 'Striped accent walls and product display for a premium feel.',
   },
   {
+    id: 'salon-interior-6',
     title: 'Salon Interior 6',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-6.png',
+    caption: 'Additional styling stations and salon atmosphere.',
   },
   {
+    id: 'salon-interior-7',
     title: 'Salon Interior 7',
     category: 'Salon Interior',
     image: '/gallery/salon-interior-7.png',
+    caption: 'Full view of interior finishes and client seating.',
   },
 ]

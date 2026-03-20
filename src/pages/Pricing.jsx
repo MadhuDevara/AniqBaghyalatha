@@ -1,60 +1,63 @@
-import { premiumServices, pricingBySection } from '../data/siteData'
+import { categoryLabels, menuPricing, premiumServices } from '../data/siteData'
+import NeonCTAButton from '../components/NeonCTAButton'
 
 function Pricing() {
-  const formatPrice = (value) => {
-    if (value.toLowerCase().includes('price based on length')) {
-      return value
-    }
-
-    return `Starts from ${value} onwards`
-  }
-
   const renderTable = (title, items) => (
-    <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-      <div className="bg-stone-900 px-6 py-4 text-lg font-semibold text-white">
-        {title}
+    <div className="about-card-gold-border about-card-gold-border-sm pricing-card-hover">
+      <div className="about-card-gold-border-inner overflow-hidden bg-white shadow-sm">
+        <div className="pricing-card-header px-6 py-4 text-lg font-semibold text-white">
+          {title}
+        </div>
+        <div className="pricing-table-scroll max-h-[400px] overflow-auto">
+          <table className="w-full text-left">
+            <thead className="bg-stone-100 text-stone-700">
+              <tr>
+                <th className="sticky top-0 z-10 bg-stone-100 px-6 py-3">Service</th>
+                <th className="sticky top-0 z-10 bg-stone-100 px-6 py-3">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((item) => (
+                <tr key={`${title}-${item.name}`} className="border-b border-stone-100">
+                  <td className="px-6 py-3 text-stone-800">{item.name}</td>
+                  <td className="px-6 py-3 font-semibold text-amber-800/90">{item.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table className="w-full text-left">
-        <thead className="bg-stone-100 text-stone-700">
-          <tr>
-            <th className="px-6 py-3">Service</th>
-            <th className="px-6 py-3">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item) => (
-            <tr key={`${title}-${item.name}`} className="border-b border-stone-100">
-              <td className="px-6 py-3 text-stone-800">{item.name}</td>
-              <td className="px-6 py-3 font-medium text-[#6B6B6B]">
-                {formatPrice(item.price)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   )
 
   return (
-    <main className="section-wrap">
-      <h1 className="section-title">Pricing</h1>
-      <p className="mt-3 max-w-2xl text-stone-600">
-        Service prices are indicative and start from the listed amount onwards.
-      </p>
-
-      <div className="mt-8 grid gap-6 lg:grid-cols-2">
-        {renderTable('Male', pricingBySection.male)}
-        {renderTable('Female', pricingBySection.female)}
+    <main className="section-wrap py-6 md:py-8">
+      <div className="flex flex-col items-start gap-3 fade-up">
+        <h1 className="section-title section-title-floater">
+          <span className="relative z-10">Pricing</span>
+        </h1>
+        <p className="max-w-2xl text-sm text-stone-200 md:text-base">
+          Service prices as per our menu. Prices are indicative.
+        </p>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-xl font-semibold text-stone-900">Premium Services</h2>
-        <p className="mt-3 text-stone-700">
-          {premiumServices.join(', ')}
-        </p>
-        <p className="mt-2 text-sm text-stone-600">
-          * Conditions apply.
-        </p>
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {Object.entries(menuPricing).map(([key, items]) => (
+          <div key={key} className="fade-up">
+            {renderTable(categoryLabels[key] || key, items)}
+          </div>
+        ))}
+      </div>
+
+      <div className="about-card-gold-border mt-8 fade-up">
+        <div className="about-card-gold-border-inner bg-white p-6 shadow-sm pricing-card-hover">
+          <h2 className="text-xl font-semibold text-stone-900">Premium Services</h2>
+          <p className="mt-3 text-stone-700">{premiumServices.join(', ')}</p>
+          <p className="mt-2 text-sm text-stone-600">* Conditions apply.</p>
+          <div className="mt-6">
+            <NeonCTAButton to="/book-appointment">Book Appointment</NeonCTAButton>
+          </div>
+        </div>
       </div>
     </main>
   )

@@ -8,10 +8,14 @@ function BookAppointment() {
 
   return (
     <main className="section-wrap py-6 md:py-8">
-      <h1 className="section-title">Book Appointment</h1>
-      <p className="mt-3 max-w-2xl text-stone-600">
-        Reserve your slot in a minute. Our team will confirm your appointment.
-      </p>
+      <div className="flex flex-col items-start gap-3">
+        <h1 className="section-title section-title-floater">
+          <span className="relative z-10">Book Appointment</span>
+        </h1>
+        <p className="section-title-floater text-sm md:text-base">
+          <span className="relative z-10">Reserve your slot in a minute. Our team will confirm your appointment.</span>
+        </p>
+      </div>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.6fr_1fr]">
         <BookingForm key={initialService} initialService={initialService} />
